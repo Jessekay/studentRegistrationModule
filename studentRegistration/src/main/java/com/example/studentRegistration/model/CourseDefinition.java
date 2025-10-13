@@ -1,7 +1,10 @@
 package com.example.studentRegistration.model;
 
+import javax.persistence.ManyToMany;
+
 public class CourseDefinition {
     private String code;
+    @ManyToMany
     private String name;
     private String description;
     public String getCode() {
