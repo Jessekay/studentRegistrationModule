@@ -1,7 +1,9 @@
 package com.example.studentRegistration.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -10,6 +12,11 @@ public class Student {
     private AcademicUnit department;
     @JoinColumn(name = "fk_department")
     @JsonBackReference("unit-student")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "register")
+    private StudentRegistration register;
+    @JoinColumn(name = "fk_register")
+    @JsonBackReference
     
     private String regNumber;
     private String firstName;
