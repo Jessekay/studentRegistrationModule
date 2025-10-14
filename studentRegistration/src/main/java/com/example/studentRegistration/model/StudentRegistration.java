@@ -27,4 +27,10 @@ public class StudentRegistration {
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
+    public StudentRegistration(List<Student> register, String studentId, LocalDate registrationDate) {
+        this.register = register;
+        this.studentId = studentId;
+        this.registrationDate = registrationDate;
+    }
+    
 }

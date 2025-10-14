@@ -26,4 +26,10 @@ public class AcademicUnit {
     public void setName(String name) {
         this.name = name;
     }
+    public AcademicUnit(List<Student> student, String code, String name) {
+        this.student = student;
+        this.code = code;
+        this.name = name;
+    }
+    
 }

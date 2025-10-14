@@ -17,4 +17,9 @@ public class StudentCourse {
     public void setResults(BigDecimal results) {
         this.results = results;
     }
+    public StudentCourse(int credits, BigDecimal results) {
+        this.credits = credits;
+        this.results = results;
+    }
+    
 }

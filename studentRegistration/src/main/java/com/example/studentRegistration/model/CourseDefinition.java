@@ -25,4 +25,10 @@ public class CourseDefinition {
     public void setDescription(String description) {
         this.description = description;
     }
+    public CourseDefinition(String code, String name, String description) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+    }
+    
 }

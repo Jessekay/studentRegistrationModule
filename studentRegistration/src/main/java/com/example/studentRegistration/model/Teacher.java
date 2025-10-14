@@ -22,5 +22,9 @@ public class Teacher {
     public void setQualifications(String qualifications) {
         this.qualifications = qualifications;
     }
-
+    public Teacher(String code, String names, String qualifications) {
+        this.code = code;
+        this.names = names;
+        this.qualifications = qualifications;
+    }
 }

@@ -31,5 +31,10 @@ public class Semester {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
-    
+    public Semester(String id, String name, LocalDate startDate, LocalDate endDate) {
+        this.id = id;
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    } 
 }

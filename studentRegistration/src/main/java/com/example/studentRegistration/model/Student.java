@@ -40,6 +40,12 @@ public class Student {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
-    
+    public Student(AcademicUnit department, StudentRegistration register, String regNumber, String firstName,
+            String dateOfBirth) {
+        this.department = department;
+        this.register = register;
+        this.regNumber = regNumber;
+        this.firstName = firstName;
+        this.dateOfBirth = dateOfBirth;
+    }
 }
