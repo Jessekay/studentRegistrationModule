@@ -2,7 +2,19 @@ package com.example.studentRegistration.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class StudentCourse {
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "studentCourse")
+    private Course course;
+    @JsonBackReference
+
     private int credits;
     private BigDecimal results;
     public int getCredits() {

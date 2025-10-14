@@ -1,6 +1,40 @@
 package com.example.studentRegistration.model;
 
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class Course {
+    @ManyToOne
+    private Student enrollCourse;
+    @JsonBackReference
+
+    @ManyToOne
+    private Semester courseSemester;
+    @JsonBackReference
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    private List<StudentCourse> studentCourse;
+    @JsonManagedReference
+
+    @ManyToMany
+    @JoinTable(name = "trCourse", joinColumns = @JoinColumn(name = "courseTeacher"),
+    inverseJoinColumns = @JoinColumn(name = "teacherId"))
+    private List<Teacher> courseTeachers;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CourseDefinition> courseDefinitions;
+    @JsonManagedReference
+
     private String id;
     private String code;
     private String name;
@@ -50,8 +84,13 @@ public class Course {
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
-    public Course(String id, String code, String name, String description, String credits, String semesterId,
-            String teacherId) {
+    public Course() {
+    }
+    public Course(Semester courseSemester, List<StudentCourse> studentCourse, List<Teacher> courseTeachers, String id,
+            String code, String name, String description, String credits, String semesterId, String teacherId) {
+        this.courseSemester = courseSemester;
+        this.studentCourse = studentCourse;
+        this.courseTeachers = courseTeachers;
         this.id = id;
         this.code = code;
         this.name = name;
@@ -60,6 +99,6 @@ public class Course {
         this.semesterId = semesterId;
         this.teacherId = teacherId;
     }
-
+    
     
 }

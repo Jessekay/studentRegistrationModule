@@ -1,6 +1,19 @@
 package com.example.studentRegistration.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+
 public class Teacher {
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "courseTeacher")
+    private List<Course> teacherCourses;
+
+    private EQualification eQualification;
+
     private String code;
     private String names;
     private String qualifications;

@@ -1,8 +1,20 @@
 package com.example.studentRegistration.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class Semester {
+
+    @OneToMany
+    private List<Course> semCourses;
+    @JoinColumn(name = "coursesPerSem")
+    @JsonManagedReference
+
     private String id;
     private String name;
     private LocalDate startDate;

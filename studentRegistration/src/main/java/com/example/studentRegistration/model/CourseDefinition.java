@@ -1,10 +1,17 @@
 package com.example.studentRegistration.model;
 
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class CourseDefinition {
+    @ManyToOne
+    @JoinColumn(name = "courseId")
+    private Course course;
+    @JsonBackReference
+
     private String code;
-    @ManyToMany
     private String name;
     private String description;
     public String getCode() {

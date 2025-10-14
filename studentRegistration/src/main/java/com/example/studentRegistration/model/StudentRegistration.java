@@ -1,17 +1,21 @@
 package com.example.studentRegistration.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class StudentRegistration {
     @ManyToOne(cascade = CascadeType.ALL)
-    private List<Student> register;
+    private Student register;
     @JsonManagedReference
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private AcademicUnit academicUnit;
+    @JoinColumn(name = "registration")
 
     private String studentId;
     private LocalDate registrationDate;
@@ -27,10 +31,13 @@ public class StudentRegistration {
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
-    public StudentRegistration(List<Student> register, String studentId, LocalDate registrationDate) {
+    public StudentRegistration() {
+    }
+    public StudentRegistration(Student register, String studentId, LocalDate registrationDate) {
         this.register = register;
         this.studentId = studentId;
         this.registrationDate = registrationDate;
     }
+    
     
 }
