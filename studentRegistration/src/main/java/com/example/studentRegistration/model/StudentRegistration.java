@@ -3,12 +3,13 @@ package com.example.studentRegistration.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class StudentRegistration {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private List<Student> register;
     @JsonManagedReference
 

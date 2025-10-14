@@ -13,7 +13,7 @@ public class Student {
     @JoinColumn(name = "fk_department")
     @JsonBackReference("unit-student")
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "register")
+    @OneToMany(mappedBy = "register")
     private StudentRegistration register;
     @JoinColumn(name = "fk_register")
     @JsonBackReference
