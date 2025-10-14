@@ -1,9 +1,20 @@
 package com.example.studentRegistration.model;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class Student {
+    @ManyToOne
+    private AcademicUnit department;
+    @JoinColumn(name = "fk_department")
+    @JsonBackReference("unit-student")
+    
     private String regNumber;
     private String firstName;
     private String dateOfBirth;
+
     public String getRegNumber() {
         return regNumber;
     }

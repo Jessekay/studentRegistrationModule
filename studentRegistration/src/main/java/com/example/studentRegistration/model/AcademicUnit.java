@@ -1,6 +1,17 @@
 package com.example.studentRegistration.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class AcademicUnit {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    @JsonManagedReference("unit-student")
+    private List<Student> student;
+
     private String code;
     private String name;
     public String getCode() {
