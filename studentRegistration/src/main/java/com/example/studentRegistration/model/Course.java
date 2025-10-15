@@ -32,6 +32,10 @@ public class Course {
     inverseJoinColumns = @JoinColumn(name = "teacherId"))
     private List<Teacher> courseTeachers;
 
+    @ManyToMany
+    @JoinTable(name = "academicUnit", joinColumns = @JoinColumn(name = "academicId"),
+    inverseJoinColumns = @JoinColumn(name = "fk_academic"))
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<CourseDefinition> courseDefinitions;
     @JsonManagedReference

@@ -16,7 +16,7 @@ public class StudentCourse {
 
     @ManyToOne
     @JoinColumn(name = "studentReg")
-    private StudentCourse studentCourse;
+    private StudentRegistration studentRegistration;
     @JsonBackReference
 
     private int credits;

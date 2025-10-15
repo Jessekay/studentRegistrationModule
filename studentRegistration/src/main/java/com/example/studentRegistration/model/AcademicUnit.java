@@ -11,17 +11,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class AcademicUnit {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
-    @JsonManagedReference
-    private List<Student> student;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseName")
     @JsonManagedReference
     private List<Course> courses;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "teachers")
-    @JsonManagedReference
-    private List<Teacher> teachers;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "academicUnit")
     @JsonManagedReference
@@ -52,10 +44,17 @@ public class AcademicUnit {
     public void setName(String name) {
         this.name = name;
     }
-    public AcademicUnit(List<Student> student, String code, String name) {
-        this.student = student;
+    public AcademicUnit(List<Course> courses, List<StudentRegistration> studentRegistrations,
+            List<AcademicUnit> academicUnits, AcademicUnit academicUnit, EAcademicUnit eAcademicUnit, String code,
+            String name) {
+        this.courses = courses;
+        this.studentRegistrations = studentRegistrations;
+        this.academicUnits = academicUnits;
+        this.academicUnit = academicUnit;
+        this.eAcademicUnit = eAcademicUnit;
         this.code = code;
         this.name = name;
     }
+    
     
 }
