@@ -10,11 +10,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class Semester {
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "semester")
     private List<Course> semCourses;
     @JsonManagedReference
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "semster")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "semester")
     private List<StudentRegistration> semesterRegistrations;
     @JsonManagedReference
 
