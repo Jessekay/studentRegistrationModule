@@ -1,21 +1,35 @@
 package com.example.studentRegistration.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class StudentRegistration {
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "fk_register")
     private Student register;
     @JsonManagedReference
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private AcademicUnit academicUnit;
     @JoinColumn(name = "registration")
+    @JsonBackReference
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentRegistration")
+    private List<StudentCourse> studentCourses;
+    @JsonManagedReference
+
+    @ManyToOne
+    private Semester semester;
+    @JoinColumn(name = "semCourse")
+    @JsonBackReference
 
     private String studentId;
     private LocalDate registrationDate;

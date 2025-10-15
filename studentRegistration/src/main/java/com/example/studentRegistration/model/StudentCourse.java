@@ -2,7 +2,6 @@ package com.example.studentRegistration.model;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -10,9 +9,14 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class StudentCourse {
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "studentCourse")
     private Course course;
+    @JsonBackReference
+
+    @ManyToOne
+    @JoinColumn(name = "studentReg")
+    private StudentCourse studentCourse;
     @JsonBackReference
 
     private int credits;

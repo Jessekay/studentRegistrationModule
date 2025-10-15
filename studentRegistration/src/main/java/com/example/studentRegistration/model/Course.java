@@ -20,6 +20,7 @@ public class Course {
 
     @ManyToOne
     private Semester courseSemester;
+    @JoinColumn(name = "coursesPerSem")
     @JsonBackReference
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")

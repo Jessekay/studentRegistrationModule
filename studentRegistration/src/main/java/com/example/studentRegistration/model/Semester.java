@@ -3,7 +3,7 @@ package com.example.studentRegistration.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -12,7 +12,10 @@ public class Semester {
 
     @OneToMany
     private List<Course> semCourses;
-    @JoinColumn(name = "coursesPerSem")
+    @JsonManagedReference
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "semster")
+    private List<StudentRegistration> semesterRegistrations;
     @JsonManagedReference
 
     private String id;

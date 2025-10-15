@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class AcademicUnit {
@@ -22,18 +23,21 @@ public class AcademicUnit {
     @JsonManagedReference
     private List<Teacher> teachers;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "academicUnit")
+    @JsonManagedReference
     private List<StudentRegistration> studentRegistrations;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
     private List<AcademicUnit> academicUnits;
+    @JsonManagedReference
 
     @ManyToOne
     @JoinColumn(name = "parentId")
     private AcademicUnit academicUnit;
+    @JsonBackReference
     
     private EAcademicUnit eAcademicUnit;
-    
+
     private String code;
     private String name;
     public String getCode() {
